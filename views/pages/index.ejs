@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <%- include('/mnt/c/Users/maldo/OneDrive/Documents/School/CS312/MiniProject/1/views/partials/head'); %>
+  <link href="/style.css" rel="stylesheet" type="text/css">
+</head>
+<body class="container">
+
+<header>
+  <%- include('/mnt/c/Users/maldo/OneDrive/Documents/School/CS312/MiniProject/1/views/partials/header'); %>
+</header>
+
+<main>
+  <body>
+  <div class="jumbotron">
+    <h1>Post Home Page &#10083; </h1>
+    <hr>
+    <% if (posts.length === 0) { %>
+      <p> No posts shared so far... &#128533; </p>
+    <% } else 
+    { %>
+      <ul>
+        <% posts.forEach(post => { %>
+          <li>
+              <h2><%= post.title %></h2>
+              <h4><%= post.author %></h4>
+              <p> <%= post.date %></p>
+              <p><%= post.body %></p>
+            <form action="/delete/<%= post.id %>" method="post">
+              <button type="submit"> Trash </button>
+            </form>
+              <button type="submit"> Edit </button>
+            </form>
+          </li>
+        <% }) %>
+      </ul>
+    <% } %>
+  </div>
+  </body>
+</main>
+
+<footer>
+  <%- include('/mnt/c/Users/maldo/OneDrive/Documents/School/CS312/MiniProject/1/views/partials/footer'); %>
+</footer>
+</body>
+</html>
